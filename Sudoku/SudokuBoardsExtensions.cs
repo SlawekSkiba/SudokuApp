@@ -8,7 +8,7 @@ namespace Sudoku
 {
     public static class SudokuBoardsExtensions
     {
-        public static void ConsolePrint(int[,] table, int offsetX = 0, int offsetY = 0)
+        public static void ConsolePrint(this int[,] table, int offsetX = 0, int offsetY = 0)
         {
             for (int row = 0; row < 9; row++)
             {

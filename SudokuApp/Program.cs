@@ -1,35 +1,41 @@
 ﻿using Sudoku;
+using System.Diagnostics;
 
 var generator = new SudokuGenerator();
 
-
-while (true)
+if (args.Length == 0)
 {
-    var filledCells = ReadInt(5,81);
-
-    generator.Generate(20, filledCells);    
-    Console.WriteLine(generator.GetAsStringFormatted());
-
-    Console.Write("Press any key to generate new board. Esc to finish the program: ");    
-    var key = Console.ReadKey();
-    if(key.Key == ConsoleKey.Escape)
-    {
-        break;
-    }
-    var pos = Console.GetCursorPosition();
-    Console.SetCursorPosition(0, pos.Top - 1);
-    Console.WriteLine("                                                                  ");
+    MyConsole.WriteError("You must provide filename with boards to solve!");
+    Console.WriteLine("Usage: SudokuApp <filename>");
+    return;
 }
 
-static int ReadInt(int min, int max)
+if (File.Exists(args[0]))
 {
-    int value;
-    do
+    var boards = (await File.ReadAllLinesAsync(args[0])).Select(line => SudokuBoardsExtensions.LoadFromString(line)).ToList();
+    Console.WriteLine($"{boards.Count} loaded");
+    MyConsole.WaitForKey("Press any key to solve next board.");
+
+    var solver = new SudokuCPSolver();
+    var boardNum = 0;
+    foreach (var board in boards)
     {
-        Console.SetCursorPosition(0,1);
-        Console.Write("                      ");
-        Console.SetCursorPosition(0, 0);
-        Console.WriteLine($"Please choose filled cells count ({min}, {max}): ");
-    } while (!(int.TryParse(Console.ReadLine(), out value) && value >= min && value <= max));
-    return value;
+        Console.Clear();
+        Console.WriteLine($"Board {++boardNum}");
+
+        board.ConsolePrint(0, 2);
+        var timePerParse = Stopwatch.StartNew();
+        var solved = solver.Solve(board);
+        timePerParse.Stop();
+
+        board.ConsolePrint(30, 2);
+        Console.SetCursorPosition(0, 20);
+        Console.WriteLine($"Board has been solved in: {timePerParse.ElapsedMilliseconds} ms");
+
+        var key = MyConsole.WaitForKey("Esc - Exit");
+        if(key.Key == ConsoleKey.Escape)
+        {
+            break;
+        }
+    }
 }
