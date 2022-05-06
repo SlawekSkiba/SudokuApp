@@ -3,33 +3,33 @@
 var generator = new SudokuGenerator();
 
 
-while (true)
+var filledCells = MyConsole.ReadIntFromRange(5, 81, "Please choose filled cells count");
+var boardsCount = MyConsole.ReadIntFromRange(1, 10000, "How many boards generate?");
+var filename = MyConsole.ReadLine("Save as filename: ");
+
+if (string.IsNullOrEmpty(filename))
 {
-    var filledCells = ReadIntFromRange(5, 81, "Please choose filled cells count");    
+    MyConsole.WriteError("Filename cannot be empty");    
+    MyConsole.WaitForKey();
+    return;
+}
+var solver = new SudokuCPSolver();
 
-    generator.Generate(40, filledCells);
-    Console.WriteLine(generator.GetAsStringFormatted());
+var rnd = new Random();
 
-    Console.Write("Press any key to generate new board. Esc to finish the program: ");
-    var key = Console.ReadKey();
-    if (key.Key == ConsoleKey.Escape)
-    {
-        break;
-    }
-    var pos = Console.GetCursorPosition();
-    Console.SetCursorPosition(0, pos.Top - 1);
-    Console.Write("                                                                               ");
+using var fileStream = new FileStream(filename, FileMode.Create);
+using var stringWriter = new StreamWriter(fileStream);
+using var fileStreamSolved = new FileStream(filename+"_solved", FileMode.Create);
+using var stringWriterSolved = new StreamWriter(fileStreamSolved);
+
+for (int i = 0; i < boardsCount; i++)
+{
+    var board = generator.Generate(rnd.Next(20) + 30, filledCells);
+    stringWriter.WriteLine(board.FormatAsString());
+
+    var solved = solver.Solve(board);
+    stringWriterSolved.WriteLine(solved.FormatAsString());
 }
 
-static int ReadIntFromRange(int min, int max, string question)
-{
-    int value;
-    do
-    {
-        Console.SetCursorPosition(0, 1);
-        Console.Write("                      ");
-        Console.SetCursorPosition(0, 0);
-        Console.WriteLine($"{question} ({min}, {max}): ");
-    } while (!(int.TryParse(Console.ReadLine(), out value) && value >= min && value <= max));
-    return value;
-}
+Console.WriteLine($"{boardsCount} has been saved to: {filename}_(solved) files");
+MyConsole.WaitForKey();

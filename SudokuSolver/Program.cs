@@ -16,8 +16,8 @@ while (true)
 
     Console.WriteLine("Original board           Generated board");
     (int px, int py) = Console.GetCursorPosition();
-    SudokuConsolePrinter.ConsolePrint(generator.FilledBoard, 0, 3);
-    SudokuConsolePrinter.ConsolePrint(generator.Board, 25, 3);    
+    SudokuBoardsExtensions.ConsolePrint(generator.FilledBoard, 0, 3);
+    SudokuBoardsExtensions.ConsolePrint(generator.Board, 25, 3);    
 
     var solved = solver.Solve(board);
     Console.WriteLine("Solved board");

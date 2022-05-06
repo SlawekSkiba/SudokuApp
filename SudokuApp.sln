@@ -3,13 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32228.430
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SudokuApp", "SudokuApp\SudokuApp.csproj", "{325BCCD1-D29B-4D23-B991-81FAAF901917}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SudokuApp", "SudokuApp\SudokuApp.csproj", "{325BCCD1-D29B-4D23-B991-81FAAF901917}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SudokuFileGenerator", "SudokuFileGenerator\SudokuFileGenerator.csproj", "{804FE4BC-AB9F-4E55-831F-B6CEA07DA0AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SudokuFileGenerator", "SudokuFileGenerator\SudokuFileGenerator.csproj", "{804FE4BC-AB9F-4E55-831F-B6CEA07DA0AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku", "Sudoku\Sudoku.csproj", "{AF674DC2-56C0-420F-B72E-670799B23848}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sudoku", "Sudoku\Sudoku.csproj", "{AF674DC2-56C0-420F-B72E-670799B23848}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SudokuSolver", "SudokuSolver\SudokuSolver.csproj", "{14EB177F-80D5-4E54-99C7-BF33D342FDAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SudokuSolver", "SudokuSolver\SudokuSolver.csproj", "{14EB177F-80D5-4E54-99C7-BF33D342FDAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SudokuTests", "SudokuTests\SudokuTests.csproj", "{FB6C832A-56D1-4422-9DEC-9A1D613F3A3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SudokuBenchmark", "SudokuBenchmark\SudokuBenchmark.csproj", "{698F197C-0370-4C35-A0A9-D7016F525F26}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{14EB177F-80D5-4E54-99C7-BF33D342FDAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14EB177F-80D5-4E54-99C7-BF33D342FDAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14EB177F-80D5-4E54-99C7-BF33D342FDAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB6C832A-56D1-4422-9DEC-9A1D613F3A3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB6C832A-56D1-4422-9DEC-9A1D613F3A3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB6C832A-56D1-4422-9DEC-9A1D613F3A3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB6C832A-56D1-4422-9DEC-9A1D613F3A3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{698F197C-0370-4C35-A0A9-D7016F525F26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{698F197C-0370-4C35-A0A9-D7016F525F26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{698F197C-0370-4C35-A0A9-D7016F525F26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{698F197C-0370-4C35-A0A9-D7016F525F26}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
