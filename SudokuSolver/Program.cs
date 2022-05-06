@@ -9,6 +9,7 @@ var generator = new SudokuGenerator();
 
 while (true)
 {
+    Console.Clear();
     var filledCells = ReadInt(5, 81);
 
     var board = generator.Generate(30, filledCells);
@@ -25,14 +26,11 @@ while (true)
     
 
     Console.Write("Press any key to generate new board. Esc to finish the program: ");
-    var key = Console.ReadKey();
+    var key = Console.ReadKey();    
     if (key.Key == ConsoleKey.Escape)
     {
         break;
     }
-    var pos = Console.GetCursorPosition();
-    Console.SetCursorPosition(0, pos.Top - 1);
-    Console.WriteLine("                                                                  ");
 }
 
 static int ReadInt(int min, int max)
