@@ -1,10 +1,4 @@
-﻿using BenchmarkDotNet.Attributes;
-using Sudoku;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Sudoku;
 
 namespace SudokuBenchmark
 {
@@ -15,15 +9,13 @@ namespace SudokuBenchmark
         private readonly List<int[,]> boards_36;
 
 
-        public SudokuBenchmarks()
+        public SudokuBenchmarks(int amoutOfBoards)
         {
-            boards_15 = File.ReadAllLines("SampleBoards\\sudoku_15_10000").Select(line => SudokuBoardsExtensions.LoadFromString(line)).Take(10).ToList();
-            boards_25 = File.ReadAllLines("SampleBoards\\sudoku_25_10000").Select(line => SudokuBoardsExtensions.LoadFromString(line)).Take(10).ToList();
-            boards_36 = File.ReadAllLines("SampleBoards\\sudoku_36_10000").Select(line => SudokuBoardsExtensions.LoadFromString(line)).Take(10).ToList();
+            boards_15 = File.ReadAllLines("SampleBoards\\sudoku_15_10000").Select(line => SudokuBoardsExtensions.LoadFromString(line)).Take(amoutOfBoards).ToList();
+            boards_25 = File.ReadAllLines("SampleBoards\\sudoku_25_10000").Select(line => SudokuBoardsExtensions.LoadFromString(line)).Take(amoutOfBoards).ToList();
+            boards_36 = File.ReadAllLines("SampleBoards\\sudoku_36_10000").Select(line => SudokuBoardsExtensions.LoadFromString(line)).Take(amoutOfBoards).ToList();
         }
-
-        
-        [Benchmark]
+                
         public void TestSolver_Board15()
         {
             var solver = new SudokuCPSolver();
@@ -33,7 +25,7 @@ namespace SudokuBenchmark
             }
         }
 
-        [Benchmark]
+        
         public void TestSolver_Board25()
         {
             var solver = new SudokuCPSolver();
@@ -43,7 +35,6 @@ namespace SudokuBenchmark
             }
         }
 
-        [Benchmark]
         public void TestSolver_Board36()
         {
             var solver = new SudokuCPSolver();
