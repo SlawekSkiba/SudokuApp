@@ -9,6 +9,7 @@ if (args.Length == 0)
     MyConsole.WriteError("You must provide filename with board to solve!");
     Console.WriteLine("Usage: SudokuApp <filename>");
     Console.WriteLine("     : SudokuApp /g  - to generate boards");
+    Console.ReadKey();
     return;
 }
 

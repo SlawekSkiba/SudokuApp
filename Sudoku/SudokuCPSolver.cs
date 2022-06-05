@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using Google.OrTools.Sat;
+﻿using Google.OrTools.Sat;
 
 namespace Sudoku
 {
     public class SudokuCPSolver
     {
-
         public int[,] Solve(int[,] grid)
         {
             var model = new CpModel();
